@@ -1,0 +1,4 @@
+chocolate 45 3
+bread 30 5
+milk 45 9
+bacon 10 5

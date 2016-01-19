@@ -1,0 +1,3 @@
+chocolate 10 2
+golden-horn 100 10
+Skyrim 99999999999 5
