@@ -62,7 +62,7 @@ public class BranchAndBound {
 		while (!queue.isEmpty()) {
 			Node current = queue.poll();
 
-			if (current.level < items.size() - 1 && current.bound > best.value) {
+			if (current.level < items.size() && current.bound > best.value) {
 				Node chosen = new Node(current);
 				Treasure firstTreasure = items.get(current.level);
 				chosen.weight += firstTreasure.getWeight();
@@ -89,11 +89,7 @@ public class BranchAndBound {
 
 			}
 		}
-		// System.out.println("Answer: " + best.value);
-		// System.out.println(best.value + " value " + best.weight + " weight "
-		// + best.bound + " bound.");
-		// System.out.println(best.taken.toString());
-		// System.out.println("BRANCHA");
+
 		return best.value;
 	}
 
@@ -102,18 +98,20 @@ public class BranchAndBound {
 		int numberTaken = treasures.size() - 1;
 		int i = chosen.level;
 		long upperBound = chosen.value;
-		Treasure tr;
-		do {
+		Treasure tr = null;
+
+		while (i <= numberTaken) {
 			tr = treasures.get(i);
 			if (totalWeight + tr.getWeight() > capacity) {
 				break;
 			}
 			totalWeight += tr.getWeight();
 			upperBound += tr.getPrice();
-			i++; // 1 | 2
-		} while (i <= numberTaken);
-
-		upperBound += (capacity - totalWeight) * (tr.getPrice() / tr.getWeight());
+			i++;
+		}
+		if (tr != null) {
+			upperBound += (capacity - totalWeight) * (tr.getPrice() / tr.getWeight());
+		}
 
 		chosen.bound = upperBound;
 	}
@@ -121,13 +119,13 @@ public class BranchAndBound {
 	public static void main(String[] args) {
 		// Scanner sc = new Scanner(System.in);
 		// List<Treasure> list = new ArrayList<>();
-		// for (int i = 0; i < 4; i++) {
+		// for (int i = 0; i < 3; i++) {
 		// String[] splitted = sc.nextLine().split(" ");
 		// list.add(new Treasure(splitted[0], Long.parseLong(splitted[1]),
 		// Integer.parseInt(splitted[2])));
 		// }
 		// BranchAndBound branch = new BranchAndBound();
-		// System.out.println(branch.knapsackWithoutRepetition(list, 0));
+		// System.out.println(branch.knapsackWithoutRepetition(list, 4));
 		// sc.close();
 	}
 

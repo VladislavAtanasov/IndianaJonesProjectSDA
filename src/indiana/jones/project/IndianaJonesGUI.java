@@ -165,7 +165,7 @@ public class IndianaJonesGUI extends JFrame {
 									"D:\\Hack Bulgaria\\Algorithms\\JavaWindows\\IndianaJonesProject\\pictures\\ok.png"));
 							return;
 						}
-						String file = fileName.getText() + ".txt";
+						String file = fileName.getText();
 						res = Starter.startDesktop(file, kilos, repeats);
 						result_Label.setText(res);
 						btnCalculate.setIcon(new ImageIcon(
@@ -219,7 +219,7 @@ public class IndianaJonesGUI extends JFrame {
 								"D:\\Hack Bulgaria\\Algorithms\\JavaWindows\\IndianaJonesProject\\pictures\\ok.png"));
 						return;
 					}
-					String file = fileName.getText() + ".txt";
+					String file = fileName.getText();
 					res = Starter.startDesktop(file, kilos, repeats);
 					result_Label.setText(res);
 					btnCalculate.setIcon(new ImageIcon(
