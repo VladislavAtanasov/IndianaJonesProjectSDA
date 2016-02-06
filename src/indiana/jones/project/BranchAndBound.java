@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.PriorityQueue;
 
-public class BranchAndBound {
+public class BranchAndBound implements KnapsackAlgorithm {
 
 	private class Node implements Comparable<Node> {
 		private List<Treasure> taken;
@@ -48,7 +48,8 @@ public class BranchAndBound {
 		root = new Node();
 	}
 
-	public long knapsackWithoutRepetition(List<Treasure> items, int cap) {
+	@Override
+	public long findMaxBagPrice(List<Treasure> items, int cap) {
 		if (cap == 0) {
 			return 0L;
 		}
@@ -112,7 +113,6 @@ public class BranchAndBound {
 		if (tr != null) {
 			upperBound += (capacity - totalWeight) * (tr.getPrice() / tr.getWeight());
 		}
-
 		chosen.bound = upperBound;
 	}
 

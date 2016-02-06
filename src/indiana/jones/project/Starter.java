@@ -27,8 +27,12 @@ public class Starter {
 				List<Treasure> treasures = reader.getTreasures();
 				System.out.println("Enter the bag capacity of Indiana Jones: ");
 				int num = Integer.parseInt(sc.nextLine());
-				System.out.println(
-						"Maximum price that the bag of Indiana Jones can have is " + KnapSack.maxPrice(num, treasures));
+				KnapsackAlgorithm knapsack = KnapSack.createKnapSackWithRepetition();
+				System.out.println("Maximum price that the bag of Indiana Jones can have is "
+						+ knapsack.findMaxBagPrice(treasures, num));
+				// System.out.println(
+				// "Maximum price that the bag of Indiana Jones can have is " +
+				// KnapSack.maxPrice(num, treasures));
 				run = false;
 				sc.close();
 			} catch (IOException e) {
@@ -46,11 +50,18 @@ public class Starter {
 		StringBuilder sb = new StringBuilder();
 		long result = 0L;
 		if (repeat == WITHOUT_REPETITIONS) {
-			result = KnapSack.maxPriceWithoutRepetition(num, treasures);
+			KnapsackAlgorithm knapsack = KnapSackWithoutRepetition.createKnapSackWithoutRepetition();
+			result = knapsack.findMaxBagPrice(treasures, num);
+			// result = KnapSack.maxPriceWithoutRepetition(num, treasures);
 		} else if (repeat == WITH_REPETITIONS) {
-			result = KnapSack.maxPrice(num, treasures);
+			KnapsackAlgorithm knapsack = KnapSack.createKnapSackWithRepetition();
+			result = knapsack.findMaxBagPrice(treasures, num);
+			// result = KnapSack.maxPrice(num, treasures);
 		} else if (repeat == BRANCH_AND_BOUND) {
-			result = new BranchAndBound().knapsackWithoutRepetition(treasures, num);
+			KnapsackAlgorithm branchAndBound = new BranchAndBound();
+			result = branchAndBound.findMaxBagPrice(treasures, num);
+			// result = new
+			// BranchAndBound().knapsackWithoutRepetition(treasures, num);
 		}
 		sb.append("Max value: ");
 		NumberFormat formatter = NumberFormat.getInstance();
@@ -68,11 +79,18 @@ public class Starter {
 		StringBuilder sb = new StringBuilder();
 		long result = 0L;
 		if (repeat == WITHOUT_REPETITIONS) {
-			result = KnapSack.maxPriceWithoutRepetition(num, treasures);
+			KnapsackAlgorithm knapsack = KnapSackWithoutRepetition.createKnapSackWithoutRepetition();
+			result = knapsack.findMaxBagPrice(treasures, num);
+			// result = KnapSack.maxPriceWithoutRepetition(num, treasures);
 		} else if (repeat == WITH_REPETITIONS) {
-			result = KnapSack.maxPrice(num, treasures);
+			KnapsackAlgorithm knapsack = KnapSack.createKnapSackWithRepetition();
+			result = knapsack.findMaxBagPrice(treasures, num);
+			// result = KnapSack.maxPrice(num, treasures);
 		} else if (repeat == BRANCH_AND_BOUND) {
-			result = new BranchAndBound().knapsackWithoutRepetition(treasures, num);
+			KnapsackAlgorithm branchAndBound = new BranchAndBound();
+			result = branchAndBound.findMaxBagPrice(treasures, num);
+			// result = new
+			// BranchAndBound().knapsackWithoutRepetition(treasures, num);
 		}
 		sb.append("Max value: ");
 		NumberFormat formatter = NumberFormat.getInstance();
